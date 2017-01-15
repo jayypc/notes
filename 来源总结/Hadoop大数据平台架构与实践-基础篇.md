@@ -75,7 +75,7 @@ source /etc/profile
     - 数据块与数据节点的映射表
 -   DateNode是工作节点，存放数据块
 
-    ![hadoop1](https://github.com/jayypc/notes/blob/master/images/hadoop1.png?raw=true)
+    ![hadoop1](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop1.png)
 
 #### HDFS中数据管理与容错
 
@@ -140,5 +140,50 @@ hadoop dfsadmin -report
 
 一个大任务分成多个小的子任务（map），**并行**执行后，合并结果（reduced）
 
-![hadoop1](https://github.com/jayypc/notes/blob/master/images/hadoop2.png?raw=true)
+![hadoop2](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop2.png)
 
+#### 基本概念
+
+- Job & Task
+  - 一个作业（Job）会被拆分成多个任务（Task），Task中又分MapTask、ReduceTask
+
+#### MapReduce体系机构中有两个节点
+
+- JobTracker
+  - 作业调度
+  - 分配任务、监控任务执行进度
+  - 监控TaskTracker的状态
+- TaskTracker
+  - 执行任务
+  - 汇报任务状态
+
+![hadoop3](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop3.png)
+
+#### MapReduce的容错机制
+
+- 重复执行：重复4次以后还是失败则放弃执行
+- 推测执行：
+  - 对执行慢的TaskTracker，在新的机器上面新建同样的TaskTracker，一旦完成结束另一任务
+  - 保证了整个任务的计算不会因为某一两个的TaskTracker故障等问题导致执行效率底
+
+### 开发hadoop程序
+
+#### WordCount实例
+
+```shell
+编译java文件，由于类里引用了hadoop的包，所以要指明路径
+javac -classpath /opt/hadoop-1.2.1/hadoop-core-1.2.1.jar:/opt/hadoop-1.2.1/lib/commons-cli-1.2.jar -d word_count_class WordCount.java
+
+进入目录word_count_class
+打包jar包
+jar -cvf wordcount.jar *.class
+
+提交任务
+hadoop jar word_count_class/wordcount.jar WordCount input_wordcount output_wordcount
+其中WordCount指明main函数所在类
+output_wordcount指明输出结果文件夹，如果hadoop里面没有这个文件夹，则会自动创建
+```
+
+#### 利用MapReduce进行排序
+
+> 完
