@@ -117,26 +117,26 @@ var global = this; //定义一个引用全局对象的全局变量
 ```
 - 在客户端JavaScript中,在其表示的浏览器窗口中Window对象充当了**全局对象**,也针对web浏览器和客户端JavaScript定义了一少部分其他全局属性.同时可以用一个属性**window**引用其自身,它可以代替**this**来引用全局对象
 - 类型转换
-|        值         |     字符串     |  数字  |  布尔值  |          对象           |
-| :--------------: | :---------: | :--: | :---: | :-------------------: |
-|    undefined     | "undefined" | NaN  | false |   throws TypeError    |
-|       null       |   "null"    |  0   | false |                       |
-|       true       |   "true"    |  1   |       |   new Boolean(true)   |
-|      false       |   "false"   |  0   |       |   new Bolean(false)   |
-|      ""空字符串      |             |  0   | false |    new String("")     |
-|    "1.2"非空数字     |             | 1.2  | true  |   new String("1.2")   |
-|    "one"非空非数字    |             | NaN  | true  |   new String("one")   |
-|        0         |     "0"     |      | false |     new Number(0)     |
-|        -0        |     "0"     |      | false |     new Number(0)     |
-|       NaN        |    "NaN"    |      | false |    new Number(NaN)    |
-|     Infinity     | "Infinity"  |      | true  | new Number(Infinity)  |
-|    -Infinity     | "-Infinity" |      | true  | new Number(-Infinity) |
-|    1(无穷大,非零)     |     "1"     |      | true  |     new Number(1)     |
-|      {}任意对象      |             |      | true  |                       |
-|      []任意数组      |     ""      |  0   | true  |                       |
-|    [9]一个数字元素)    |     "9"     |  9   | true  |                       |
-|    ['a']其他数组     |             | NaN  | true  |                       |
-| function{}(任意函数) |             | NaN  | true  |                       |
+|       值        |     字符串     |  数字  |  布尔值  |          对象           |
+| :------------: | :---------: | :--: | :---: | :-------------------: |
+|   undefined    | "undefined" | NaN  | false |   throws TypeError    |
+|      null      |   "null"    |  0   | false |                       |
+|      true      |   "true"    |  1   |       |   new Boolean(true)   |
+|     false      |   "false"   |  0   |       |   new Bolean(false)   |
+|     ""空字符串     |             |  0   | false |    new String("")     |
+|   "1.2"非空数字    |             | 1.2  | true  |   new String("1.2")   |
+|   "one"非空非数字   |             | NaN  | true  |   new String("one")   |
+|       0        |     "0"     |      | false |     new Number(0)     |
+|       -0       |     "0"     |      | false |     new Number(0)     |
+|      NaN       |    "NaN"    |      | false |    new Number(NaN)    |
+|    Infinity    | "Infinity"  |      | true  | new Number(Infinity)  |
+|   -Infinity    | "-Infinity" |      | true  | new Number(-Infinity) |
+|    1无穷大,非零     |     "1"     |      | true  |     new Number(1)     |
+|     {}任意对象     |             |      | true  |                       |
+|     []任意数组     |     ""      |  0   | true  |                       |
+|   [9]一个数字元素    |     "9"     |  9   | true  |                       |
+|   ['a']其他数组    |             | NaN  | true  |                       |
+| function{}任意函数 |             | NaN  | true  |                       |
 - 显示转换
 ```
 Number("3")    //=> 3
