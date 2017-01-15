@@ -32,7 +32,7 @@
     - Hive：将sql语句转换为hadoop任务去执行，降低使用hadoop的门槛
     - Hbase：存储结构化数据的分布式数据库，同传统的关系型数据库区别是Hbase放弃事物特性追求更高的扩展；同HDFS不同的是Hbase提供数据的随机读写和实时访问，实现对表数据的读写功能
     - zookeeper：监控hadoop集群里面每个节点的状态，管理整个集群的配置，维护节点间数据一致性等
-- 人才需求：hadoop开发、hadoop运营（对一个大规模hadoop集群，能够hadoop性能优化等）
+- 人才需求：hadoop开发、hadoop运营（对一个大规模hadoop集群的性能优化等）
 
 ### 安装hadoop
 
@@ -75,13 +75,13 @@ source /etc/profile
     - 数据块与数据节点的映射表
 -   DateNode是工作节点，存放数据块
 
-    ![hadoop1](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop1.png)
+      ![hadoop1](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop1.png)
 
 #### HDFS中数据管理与容错
 
 - 每个数据块都有3个副本，分布在两个机架内的三个节点
 - 心跳检测：NameNode和DateNode之间有心跳协议，DateNode定期向NameNode发送心跳消息
-    - 二级NameNode：SecondaryNameNode会定期同步元数据映像文件和修改日志，一旦 NameNo的发生故障，会替代NameNode
+    - 二级NameNode：SecondaryNameNode会定期同步元数据映像文件和修改日志，一旦 NameNode的发生故障，会替代NameNode
 
 #### HDFS中文件的读写操作
 
