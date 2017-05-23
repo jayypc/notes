@@ -73,9 +73,12 @@ source /etc/profile
 -   NameNode是管理节点，存放文件元数据
     - 文件与数据块的映射表
     - 数据块与数据节点的映射表
--   DateNode是工作节点，存放数据块
 
-      ![hadoop1](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop1.png)
+- DateNode是工作节点，存放数据块
+
+  ![hadoop1](https://raw.githubusercontent.com/jayypc/notes/master/images/hadoop1.png)
+
+  ​
 
 #### HDFS中数据管理与容错
 
