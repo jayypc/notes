@@ -1,5 +1,35 @@
 快捷键：
 
+## 在用快捷方式记录
+
+Ctrl+D: 删除当前行
+
+Ctrl+O 快速显示 OutLine
+
+Ctrl+K 快速定位到下一个    Ctrl+Shift+K 快速定位到上一个
+
+Ctrl+J 正向增量查找  Ctrl+Shift+J 反向增量查找(和上条相同,只不过是从后往前查)
+
+Ctrl+T 快速显示当前类的继承结构
+
+Ctrl+/ 注释当前行,再按则取消注释
+
+Ctrl+Shift+/ 自动注释代码
+
+Ctrl+Shift+O 自动引导类包
+
+Ctrl+Shift+X 把当前选中的文本全部变为大写
+
+Ctrl+Shift+Y 把当前选中的文本全部变为小写
+
+Ctrl+Shift+F 格式化当前代码
+
+Ctrl+Shift+P 定位到对于的匹配符(譬如{}) (从前面定位后面时,光标要在匹配符里面,后面到前面,则反之)
+
+Ctrl+Shift+R打开资源
+
+
+
 
 MyEclipse 快捷键1(CTRL)
 -------------------------------------
@@ -26,7 +56,7 @@ Ctrl+F8切换到下一个View
 MyEclipse 快捷键2(CTRL+SHIFT)
 ------------------------------------------
 Ctrl+Shift+E 显示管理当前打开的所有的View的管理器(可以选择关闭,激活等操作)
-Ctrl+Shift+/ 自动注释代码
+Ctrl+Shift+/ 在代码窗口中是这种/*~*/注释，在JSP文件窗口中是 <!--~-->。
 Ctrl+Shift+\自动取消已经注释的代码
 Ctrl+Shift+O 自动引导类包
 Ctrl+Shift+J 反向增量查找(和上条相同,只不过是从后往前查)
@@ -36,10 +66,8 @@ Ctrl+Shift+Y 把当前选中的文本全部变为小写
 Ctrl+Shift+F 格式化当前代码
 Ctrl+Shift+M(先把光标放在需导入包的类名上) 作用是加Import语句
 Ctrl+Shift+P 定位到对于的匹配符(譬如{}) (从前面定位后面时,光标要在匹配符里面,后面到前面,则反之)
-Ctrl+Shift+F格式化文件Format Document。
-Ctrl+Shift+O作用是缺少的Import语句被加入，多余的Import语句被删除。
 Ctrl+Shift+S保存所有未保存的文件。
-Ctrl+Shift+/ 在代码窗口中是这种/*~*/注释，在JSP文件窗口中是 <!--~-->。
+Ctrl+Shift+R打开资源
 Shift+Ctrl+Enter 在当前行插入空行(原理同上条)
 
 

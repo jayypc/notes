@@ -57,8 +57,8 @@
 mvn compile 编译
 mvn clean 清空
 mvn test 测试
-mvn package 打包
-mvn install 把项目安装到本地仓库
+mvn package 打包(-e详细异常，-U强制更新)
+mvn install 把项目安装到本地仓库,可以被本地工程引用(mvn clean install)
 ```
 
 ### Maven远程仓库搜索网页
@@ -139,7 +139,7 @@ mvn install 把项目安装到本地仓库
 
   - 依赖传递
     1. A → B → C → X(P1)	A → D → X(P2)	最短路径原则
-    2. A → B → X(P1)		A → D → X(P2)	最先声明原则
+     2. A → B → X(P1)A → D → X(P2)最先声明原则
   - 依赖范围
     - classpath(运行引入包路径)有三种：编译classpath、测试classpath、运行classpath
     - 根据上面的分类存在以下几种scope
@@ -224,6 +224,97 @@ mvn install 把项目安装到本地仓库
     	</dependencies>
     </dependencyManagement>
     ```
+
+  - 打包时候的java版本设定
+
+    - cli的时候要编译的版本要与运行的jre一致
+
+      - 编译的时候可以通过以下配置忽略未经检查或不安全的操作
+
+      ```xml
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.3</version>
+          <configuration>
+            <source>1.8</source>
+            <target>1.8</target>
+            <testSource>1.8</testSource>
+            <testTarget>1.8</testTarget>
+                      <compilerArgument>-Xlint:unchecked</compilerArgument>
+          </configuration>
+        </plugin>
+      </plugins>
+      ```
+
+    - eclipse的run Config里面配置运行的jre与要编译的一致
+
+    - 通过配置一个自定义java.version来对应到spring-boot-maven-plugin中的引用
+
+    ```xml
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>  
+        <maven.compiler.target>1.8</maven.compiler.target>  
+    </properties>
+    ```
+
+  - build中的配置
+
+    - 两种类型的build:一种是project的子节点,另一种是profile的子节点
+      - project下 的build比另一个多包含了两个特殊元素:<Directory> 和 <extensions>
+
+    ```xml
+    <project xmlns="http://maven.apache.org/POM/4.0.0"  
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">  
+      ...  
+      <!-- "Project Build" contains elements of the BaseBuild set and the Build set-->  
+      <build>...</build>  
+       
+      <profiles>  
+        <profile>  
+          <!-- "Profile Build" contains elements of the BaseBuild set only -->  
+          <build>...</build>  
+        </profile>  
+      </profiles>  
+    </project>  
+    ```
+
+    - build下常用resources和plugins
+
+      - resources主要用于打包资源文件，默认情况下maven只打包src/main/resources下的资源
+
+      ```xml
+      <build>  
+          <finalName>test</finalName>  
+          <!--  这样也可以把所有的xml文件，打包到相应位置。
+        	其中**/*这样的写法，是为了保证各级子目录下的资源文件被打包-->
+          <resources>  
+              <resource>  
+                  <directory>src/main/resources</directory>  
+                  <includes>  
+                      <include>**/*.properties</include>  
+                      <include>**/*.xml</include>  
+                      <include>**/*.tld</include>  
+                  </includes>  
+                  <filtering>false</filtering>  
+              </resource>  
+              <resource>  
+                  <directory>src/main/java</directory>  
+                  <includes>  
+                      <include>**/*.properties</include>  
+                      <include>**/*.xml</include>  
+                      <include>**/*.tld</include>  
+                  </includes>  
+                  <filtering>false</filtering>  
+              </resource>  
+          </resources>  
+      </build>  
+      ```
 
 #### Maven 插件
 
