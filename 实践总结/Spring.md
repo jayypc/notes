@@ -38,10 +38,7 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
 
     ```xml
     <bean id="peopleFactory" class="com.java1234.factory.PeopleFactory"></bean>
-
     <bean id="people7" factory-bean="peopleFactory" factory-method="createPeople"></bean>
-
-
     <bean id="people8" class="com.java1234.factory.PeopleFactory2" factory-method="createPeople"></bean>
     ```
 
@@ -271,7 +268,6 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
 - 使用Apache dbcp的数据库连接池
 
   > 现在常用的开源数据连接池主要有c3p0、dbcp和proxool三种
-  >
   > hibernate开发组推荐使用c3p0; 
   > spring开发组推荐使用dbcp(dbcp连接池有weblogic连接池同样的问题，就是强行关闭连接或数据库重启后，无法reconnect，告诉连接被重置，这个设置可以解决); 
   > hibernate in action推荐使用c3p0和proxool;
@@ -300,8 +296,6 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
   	  
   	<property name="maxWait" value="100"/>  
   </bean>
-
-
   <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
   	<property name="jdbcUrl" value="${jdbc.url}" />
   	<property name="driverClass" value="${jdbc.driverClassName}" />
@@ -320,16 +314,12 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
   	
   	<property name="maxStatements" value="0" />
 
-  	
   	<property name="idleConnectionTestPeriod" value="60" />
 
-  	
   	<property name="acquireRetryAttempts" value="30" />
 
-  	
   	<property name="breakAfterAcquireFailure" value="true" />
 
-  	
   	<property name="testConnectionOnCheckout"  value="false" />        
   </bean>
   ```
@@ -438,8 +428,6 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
   - JdbcDaoSupport需要被注入dataSource，修改配置文件
 
     ```xml
-
-
     <bean id="studentDao" class="com.java1234.dao.impl.StudentDaoImpl">
     	<property name="dataSource" ref="dataSource"></property>
     </bean> 
@@ -593,14 +581,13 @@ http://repo.springsource.org/libs-release-local/org/springframework/spring/
 - web.xml
 
   ```xml
-    
   <context-param>  
   	<param-name>contextConfigLocation</param-name>  
   	<param-value>classpath:applicationContext.xml</param-value>  
   </context-param>  
 
-
   <listener>  
   	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
   </listener> 
   ```
+

@@ -247,3 +247,12 @@ alter table member alter column phone char(15);
 
 ![Alt description](https://raw.githubusercontent.com/jayypc/notes/master/images/sql1.png)
 ![Alt description](https://raw.githubusercontent.com/jayypc/notes/master/images/sql2.png)
+
+#### wm_concat函数
+
+可以把列值以','号分隔起来并显示成一行
+
+```sql
+select wm_concat(name) from test;
+select replace(wm_concat(name),',','|') from test
+```
